@@ -1,16 +1,8 @@
 # Project Overview
-{プロジェクトの概要を記述 (例: Dotfiles management project for macOS using Nix and Home-Manager)}
+他リポジトリで使う agent skill を管理するリポジトリ。`skills/<name>/SKILL.md` に 1 スキル 1 ディレクトリで置く。リポジトリ全体が 1 つの Claude Code plugin（`.claude-plugin/`）であり、`npx skills add Hol1kgmg/SKILL` でも導入できる。新しいスキルを追加したら README.md の Skills 表も更新する。
 
 # Setup and Basic Usage
 Setup instructions and basic usage are documented in [README.md](./README.md).
-
-# Directory Structure
-{※ディレクトリ構造のドキュメントが不要な場合はこのセクションごと削除}
-See [{DIRECTORY_STRUCTURE_FILE}.md](./{DIRECTORY_STRUCTURE_FILE}.md) for details.
-
-# Troubleshooting
-{※トラブルシューティングのドキュメントが不要な場合はこのセクションごと削除}
-- Setup and daily usage issues: See [{TROUBLESHOOTING_FILE}.md](./{TROUBLESHOOTING_FILE}.md)
 
 # Work Rules
 1. Propose implementation plan

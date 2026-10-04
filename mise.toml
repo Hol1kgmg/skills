@@ -9,3 +9,11 @@ run = [
   "mise install",
   "lefthook install",
 ]
+
+[tasks.validate]
+description = "Validate marketplace and plugin manifests"
+run = 'claude plugin validate .'
+
+[tasks.new]
+description = "Scaffold a new skill: mise run new <name>"
+run = 'npx -y skills init skills/{{arg(name="name")}}'

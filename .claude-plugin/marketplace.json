@@ -1,0 +1,12 @@
+{
+  "name": "hol1kgmg",
+  "description": "Hol1kgmg's personal agent skills",
+  "owner": { "name": "Hol1kgmg" },
+  "plugins": [
+    {
+      "name": "hol1kgmg-skills",
+      "source": "./",
+      "description": "All skills in this repo (skills/*)"
+    }
+  ]
+}
