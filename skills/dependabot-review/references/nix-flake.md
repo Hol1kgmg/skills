@@ -24,6 +24,7 @@ gh pr diff <番号> -- flake.lock
 |---|---|---|
 | devShell / packages で実際にツールを引いている | `nixpkgs`、オーバーレイ、自前の NUR | ステップ3で実バージョンを比較 |
 | ビルドヘルパー・ライブラリのみ | `flake-utils`、`flake-parts` | CI(`nix flake check` 等)が通れば追加確認不要 |
+| `flake = false` で中身をそのまま配置する | agent skill / rules のリポジトリや gist | [nix-content-input.md](nix-content-input.md) に切り替える。以降のステップは適用しない |
 
 ## 3. 実バージョンの比較
 

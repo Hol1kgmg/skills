@@ -1,7 +1,7 @@
 ---
 name: dependabot-review
-description: openなdependabotのPRを一覧し、ユーザーが選んだ対象PRについてマージ可能かをレビューする(デフォルトはcheck-only)。CI状態・コンフリクト有無を確認したうえで、ecosystemごとの手順(semver判定 / nix flake.lockの実バージョン比較)でバージョン差分を判定し、レポートに統合する。ユーザーが複数PRのマージを明示指示した場合のみ、1件ずつマージ→残りをrebaseする手順に従いマージを実施する。
-allowed-tools: Bash(gh pr list:*), Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr checks:*), Bash(gh pr merge:*), Bash(gh pr comment:*), Bash(gh run list:*), Bash(nix eval:*), Read, Grep, Glob, AskUserQuestion
+description: openなdependabotのPRを一覧し、ユーザーが選んだ対象PRについてマージ可能かをレビューする(デフォルトはcheck-only)。CI状態・コンフリクト有無を確認したうえで、ecosystemごとの手順(semver判定 / nix flake.lockの実バージョン比較 / flake = false な input の内容差分)でバージョン差分を判定し、レポートに統合する。ユーザーが複数PRのマージを明示指示した場合のみ、1件ずつマージ→残りをrebaseする手順に従いマージを実施する。
+allowed-tools: Bash(gh pr list:*), Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh pr checks:*), Bash(gh pr merge:*), Bash(gh pr comment:*), Bash(gh run list:*), Bash(nix eval:*), Bash(git clone:*), Bash(git -C:*), Read, Grep, Glob, AskUserQuestion
 ---
 
 # dependabot-review — dependabot PR マージ可否レビュー(デフォルトcheck-only)
@@ -11,8 +11,11 @@ openな dependabot PR を洗い出し、ユーザーが選んだ対象につい�
 
 | ecosystem | 手順書 |
 |---|---|
-| `nix` | [references/nix-flake.md](references/nix-flake.md)(flake.lock は rev しか変わらないため `nix eval` で実バージョンを比較) |
+| `nix`(devShell / packages で使う input) | [references/nix-flake.md](references/nix-flake.md)(flake.lock は rev しか変わらないため `nix eval` で実バージョンを比較) |
+| `nix`(`flake = false` で中身をそのまま配置する input。agent skill / rules など) | [references/nix-content-input.md](references/nix-content-input.md)(rev 間の内容差分を読んで安全性と挙動変化を判定) |
 | それ以外(npm / github-actions / gomod / docker / pip / cargo / bundler など) | [references/semver.md](references/semver.md)(PRタイトル・bodyの `from A to B` から semver 判定) |
+
+`nix` の 2 手順の振り分けは [references/nix-flake.md](references/nix-flake.md) のステップ 2 で行う。
 
 リポジトリ固有の判定ルール(例: 「Node のバージョン変化は必ず要確認」「このツールは生成コードに影響する」)は、利用側リポジトリの AGENTS.md / CLAUDE.md に書かれていればそれに従う。なければ手順書のデフォルト基準を使う。
 
@@ -89,6 +92,7 @@ gh pr checks <番号>
 | #12 | eslint-plugin-... | 1.0.0→1.0.1 | patch | ✅ | なし | ✅ マージ推奨 | - |
 | #5  | npm-minor-patch (group) | ... | minor | ✅ | なし | ⚠️ 要確認 | 8パッケージ一括更新、@tanstack/* を個別確認推奨 |
 | #33 | nixpkgs | rev変更 | rev | ✅ | なし | ⚠️ 要確認 | nodejs: 24.15.0→24.16.0、他の devShell パッケージは変化なし |
+| #40 | Hol1kgmg/skills (flake=false) | rev変更 | content | ✅ | なし | ⚠️ 要確認 | dependabot-review/SKILL.md に Bash 手順追加 |
 
 ### 詳細(要確認・非推奨のPRのみ)
 - PR番号ごとに判定理由と確認事項を記載
