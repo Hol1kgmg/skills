@@ -1,0 +1,14 @@
+{
+  "name": "@hol1kgmg/skills",
+  "version": "1.0.0",
+  "description": "Hol1kgmg's personal agent skills (skills/*)",
+  "author": "Hol1kgmg",
+  "license": "MIT",
+  "repository": "github:Hol1kgmg/SKILL",
+  "files": [
+    "skills/"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

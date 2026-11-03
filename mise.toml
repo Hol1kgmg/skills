@@ -17,3 +17,7 @@ run = 'claude plugin validate .'
 [tasks.new]
 description = "Scaffold a new skill: mise run new <name>"
 run = 'npx -y skills init skills/{{arg(name="name")}}'
+
+[tasks.publish]
+description = "Publish @hol1kgmg/skills to npm"
+run = 'npm publish'

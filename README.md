@@ -12,6 +12,15 @@ npx skills add Hol1kgmg/SKILL -s '*'          # 全部
 npx skills add Hol1kgmg/SKILL -s dependabot-review -g   # グローバル
 ```
 
+### pnpm（v12.11+ / [Agent Skills](https://pnpm.io/ja/agent-skills)）
+
+```bash
+pnpm add -D @hol1kgmg/skills
+pnpm approve      # 承認すると .claude/skills などに pnpm-@hol1kgmg+skills-<name> としてリンク
+```
+
+リンク先の `.<agent>/skills` ディレクトリが事前に必要（Claude Code 内から実行した場合は自動作成）。`pnpm dlx` / グローバルインストールでは無効。
+
 ### Claude Code plugin
 
 ```
@@ -35,4 +44,5 @@ mise run setup                 # ツール導入 + lefthook (gitleaks)
 mise run new <name>            # 新規スキル雛形（npx skills init）
 mise run validate              # claude plugin validate
 claude --plugin-dir .          # ローカル動作確認
+mise run publish               # npm へ公開（package.json の version を上げてから）
 ```
