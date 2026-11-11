@@ -36,6 +36,10 @@ pnpm approve      # 承認すると .claude/skills などに pnpm-@hol1kgmg+skil
 |---|---|
 | dependabot-review | open な dependabot PR を一覧・レビュー。semver 判定と nix flake.lock の実バージョン比較は `references/` の手順書で分割 |
 | speckit-explain | spec-kit ワークフローと各 speckit-* skill の説明 |
+| cognitive-rhythm-writing | 説明文に緩急を設計する規範。出所: [gist](https://gist.github.com/k16shikano/eb2929f13ed19c97188393d297be8432)（Unlicense） |
+| japanese-tech-writing | 日本語の技術文書の文章規範。出所: [gist](https://gist.github.com/k16shikano/fd287c3133457c4fd8f5601d34aa817d)（Unlicense） |
+
+gist 由来の skill は `flake.nix` の input で版を固定し、`.github/workflows/vendor-gist-skills.yaml` が毎週金曜に最新化して main に直接 commit する。手で編集しない。
 
 ## Develop
 
@@ -45,4 +49,5 @@ mise run new <name>            # 新規スキル雛形（npx skills init）
 mise run validate              # claude plugin validate
 claude --plugin-dir .          # ローカル動作確認
 mise run publish               # npm へ公開（package.json の version を上げてから）
+mise run vendor                # flake.lock の gist を skills/ に写す（nix が必要。更新は nix flake update <input>）
 ```

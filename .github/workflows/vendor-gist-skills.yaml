@@ -1,0 +1,35 @@
+name: vendor-gist-skills
+
+on:
+  # 金曜 09:00 JST。claude-temp の Dependabot（土曜 08:00）より前に終える
+  schedule:
+    - cron: "0 0 * * 5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  vendor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: DeterminateSystems/nix-installer-action@786fff0690178f1234e4e1fe9b536e94f5433196 # v20
+      # レビューは利用側の Dependabot PR で行うため、ここでは main に直接 commit する（issue #1）
+      - run: |
+          inputs="cognitive-rhythm-writing japanese-tech-writing"
+          # shellcheck disable=SC2086
+          nix flake update $inputs
+          nix run .#skills-vendor
+          if [ -z "$(git status --porcelain flake.lock skills)" ]; then
+            echo "gist に差分はない"
+            exit 0
+          fi
+          msg="chore: gist の skill を取り込む"$'\n'
+          for i in $inputs; do
+            msg+=$'\n'"- $i: $(jq -r --arg i "$i" '.nodes[$i].locked.rev' flake.lock)"
+          done
+          git add flake.lock skills
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+            commit -m "$msg"
+          git push origin HEAD:main

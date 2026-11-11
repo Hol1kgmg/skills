@@ -1,0 +1,116 @@
+{
+  "nodes": {
+    "agent-skills": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792594212,
+        "narHash": "sha256-XWx3R/AIeYdyZ3guuZVNqirEUPPpehICrIRV3VabR+U=",
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "f48aa227f3d157ae3abda12cd9c4ab867f400419",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "type": "github"
+      }
+    },
+    "cognitive-rhythm-writing": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783600534,
+        "narHash": "sha256-Zo3iVnTvVG6IfU9vBf4Zv/bEcKmNKnI2IY1D0uvzkNM=",
+        "ref": "refs/heads/main",
+        "rev": "a3b1e26beced71d582e13314fb6f5b179b023c76",
+        "revCount": 3,
+        "type": "git",
+        "url": "https://gist.github.com/k16shikano/eb2929f13ed19c97188393d297be8432.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://gist.github.com/k16shikano/eb2929f13ed19c97188393d297be8432.git"
+      }
+    },
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1791914995,
+        "narHash": "sha256-Zf/xfQEAasnwnmEfHqW/4hjDE/s44yn2hD4RuVIZRjA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b7a79d3fea1e214f6d668d521cecec0c01e26544",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "japanese-tech-writing": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788943331,
+        "narHash": "sha256-jo1DvsAVIAKzurutp+T66kctgaFEe+sVbY9bf7wlCLM=",
+        "ref": "refs/heads/main",
+        "rev": "8f2d57610a73efc97d743c9b0b0ecb1002e09fa4",
+        "revCount": 7,
+        "type": "git",
+        "url": "https://gist.github.com/k16shikano/fd287c3133457c4fd8f5601d34aa817d.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://gist.github.com/k16shikano/fd287c3133457c4fd8f5601d34aa817d.git"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1794042290,
+        "narHash": "sha256-ziZn2PvCJE5JEEpqTdxXwJpPB+L3YqoCpTAMCzyaP3U=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f4a03c008967841f2a0b3cb7c436fc6fc31671f6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "agent-skills": "agent-skills",
+        "cognitive-rhythm-writing": "cognitive-rhythm-writing",
+        "flake-utils": "flake-utils",
+        "japanese-tech-writing": "japanese-tech-writing",
+        "nixpkgs": "nixpkgs"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
