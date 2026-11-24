@@ -38,6 +38,7 @@ pnpm approve      # 承認すると .claude/skills などに pnpm-@hol1kgmg+skil
 | speckit-explain | spec-kit ワークフローと各 speckit-* skill の説明 |
 | cognitive-rhythm-writing | 説明文に緩急を設計する規範。出所: [gist](https://gist.github.com/k16shikano/eb2929f13ed19c97188393d297be8432)（Unlicense） |
 | japanese-tech-writing | 日本語の技術文書の文章規範。出所: [gist](https://gist.github.com/k16shikano/fd287c3133457c4fd8f5601d34aa817d)（Unlicense） |
+| slide-reviewer | 技術登壇スライドを内容・見た目に分けてレビュー。Slidev / Marp / PDF に対応し、スライド単位の改善案と優先度を提示 |
 
 gist 由来の skill は `flake.nix` の input で版を固定し、`.github/workflows/vendor-gist-skills.yaml` が毎週金曜に最新化して main に直接 commit する。手で編集しない。
 
